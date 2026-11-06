@@ -1,0 +1,14 @@
+var startDate = 1793848260000;
+var cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
+var displaySinceStart = "";
+var displayCookieTotal = "";
+const displayCookie = document.createElement("h1");
+const displayStartDate = document.createElement("h1");
+
+setInterval(function(){
+  cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
+  displaySinceStart = (Date.now()-startDate)/86400000 + " days since start";
+  displayCookieTotal = cookieTotal + " cookies earned (rough estimate)";
+  displayCookie.innerHTML = displayCookieTotal;
+  displayStartDate.innerHTML = displaySinceStart;
+}, 16)
