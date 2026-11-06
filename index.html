@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-<body>
-<script>
-var startDate = 1793848260000;
-var cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
-var displaySinceStart = "";
-var displayCookieTotal = "";
-const displayCookie = document.createElement("h1");
-const displayStartDate = document.createElement("h1");
-
-setInterval(function(){
-  cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
-  displaySinceStart = (Date.now()-startDate)/86400000 + " days since start";
-  displayCookieTotal = cookieTotal + " cookies earned (rough estimate)";
-  displayCookie.innerHTML = displayCookieTotal;
-  displayStartDate.innerHTML = displaySinceStart;
-}, 16)
-</script>
-</body>
+  <head>
+    <title>Sisyphus Autoclicker Live Total</title>
+    <style>
+      body {
+        font-family: "Trebuchet MS", sans-serif;
+        background-color: powderblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Autoclicker has made a total of <span id="display-cookies">0</span> cookies (approx.)</h1>
+    <h1>Started autoclicking <span id="display-start">0</span> days ago</h1>
+    <script>
+      var startDate = 1793848260000;
+      var cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
+      var displaySinceStart = "";
+      var displayCookieTotal = "";
+      const displayCookie = document.getElementById("display-cookies")
+      const displayStartDate = document.getElementById("display-start");
+      
+      setInterval(function(){
+        cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
+        displaySinceStart = (Date.now()-startDate)/86400000 + " days since start";
+        displayCookieTotal = cookieTotal + " cookies earned (rough estimate)";
+        displayCookie.textContent = displayCookieTotal;
+        displayStartDate.textContent = displaySinceStart;
+      }, 16)
+    </script>
+  </body>
 </html>
