@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1>Autoclicker has made a total of <span id="display-cookies">0</span> cookies (approx.)</h1>
-    <h1>Started autoclicking <span id="display-start">0</span> days ago</h1>
+    <h1>Started autoclicking <span id="display-start">0</span> ago</h1>
     <script>
       var startDate = 1793848260000;
       var cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
@@ -21,9 +21,23 @@
       const displayStartDate = document.getElementById("display-start");
       
       setInterval(function(){
-        cookieTotal = 47.7394744009*((Date.now()-startDate)/1000);
-        displaySinceStart = (Date.now()-startDate)/86400000 + " days since start";
-        displayCookieTotal = cookieTotal + " cookies earned (rough estimate)";
+		totalSeconds = (Date.now()-startDate)/1000
+		const SECONDS_IN_DAY = 86400;
+        const SECONDS_IN_HOUR = 3600;
+        const SECONDS_IN_MINUTE = 60;
+
+        const days = Math.floor(totalSeconds / SECONDS_IN_DAY);
+        totalSeconds %= SECONDS_IN_DAY;
+
+        const hours = Math.floor(totalSeconds / SECONDS_IN_HOUR);
+        totalSeconds %= SECONDS_IN_HOUR;
+
+        const minutes = Math.floor(totalSeconds / SECONDS_IN_MINUTE);
+        const seconds = Math.floor(totalSeconds % SECONDS_IN_MINUTE);
+
+        cookieTotal = Math.round(47.7394744009*((Date.now()-startDate)/1000));
+        displaySinceStart = days + " day(s) " + hours + " hour(s) " + minutes + " minute(s) " + seconds + " second(s)";
+        displayCookieTotal = cookieTotal;
         displayCookie.textContent = displayCookieTotal;
         displayStartDate.textContent = displaySinceStart;
       }, 16)
